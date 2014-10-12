@@ -11,6 +11,7 @@ setup(name='biomodels-admin',
       packages=find_packages(),
       install_requires=[
         'jinja2',
-        'bioservices'
+        'bioservices',
+        'six'
       ]
       )

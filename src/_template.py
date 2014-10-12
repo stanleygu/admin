@@ -1,3 +1,7 @@
+'''
+Functions for templating of repo content files
+'''
+
 from jinja2 import Template
 
 def read_file(path):
