@@ -5,4 +5,7 @@ setup(name='{{name}}',
       description='{{description}}',
       url='{{url}}',
       packages=find_packages(),
-      )
+      install_requires=[
+        'libsbml'
+      ]
+    )
