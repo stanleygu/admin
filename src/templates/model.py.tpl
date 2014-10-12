@@ -1,4 +1,3 @@
-import libsbml
 import os
 
 path = os.path.dirname(os.path.realpath(__file__))
@@ -7,5 +6,14 @@ sbmlFilePath = os.path.join(path, '{{path}}')
 with open(sbmlFilePath,'r') as f:
     sbmlString = f.read()
 
-sbml = libsbml.readSBMLFromString(sbmlString)
+def module_exists(module_name):
+    try:
+        __import__(module_name)
+    except ImportError:
+        return False
+    else:
+        return True
 
+if module_exists('libsbml'):
+    import libsbml
+    sbml = libsbml.readSBMLFromString(sbmlString)

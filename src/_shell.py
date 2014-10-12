@@ -15,9 +15,12 @@ def shell(cmd='', dir=os.getcwd()):
         cmd = cmd.split(' ')
     process = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=dir)
     stdout, stderr = process.communicate()
-    print '------------------------------'
-    print 'STDOUT: %s' % stdout
-    print 'STDERR: %s' % stderr
+    if stderr or stdout:
+        print '------------------------------'
+    if stdout:
+        print 'STDOUT: %s' % stdout
+    if stderr:
+        print 'STDERR: %s' % stderr
     
     return stdout, stderr
     
