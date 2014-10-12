@@ -18,7 +18,7 @@ ids = ['BIOMD0000000051']
 
 for id in ids:
     sbml = s.getModelSBMLById(id)
-    mkdirp(os.path.join(DIR_REPOS, id, 'src'))
+    mkdirp(os.path.join(DIR_REPOS, id, id))
     
     setup_params = {
         'name': id,
@@ -36,9 +36,9 @@ for id in ids:
     with open(os.path.join(DIR_REPOS, id, 'setup.py'), 'w') as f:
         f.write(t.setuppy_template(setup_params))
         
-    with open(os.path.join(DIR_REPOS, id, 'src/model.py'), 'w') as f:
+    with open(os.path.join(DIR_REPOS, id, id, 'model.py'), 'w') as f:
         f.write(t.modelpy_template(model_params))
-    with open(os.path.join(DIR_REPOS, id, 'src', id + '.xml'), 'w') as f:
+    with open(os.path.join(DIR_REPOS, id, id, id + '.xml'), 'w') as f:
         f.write(sbml.encode('utf-8'))
-    with open(os.path.join(DIR_REPOS, id, '__init__.py'), 'w') as f:
+    with open(os.path.join(DIR_REPOS, id, id, '__init__.py'), 'w') as f:
         f.write(t.initpy_template(init_params))        

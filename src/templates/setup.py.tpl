@@ -6,6 +6,6 @@ setup(name='{{name}}',
       url='{{url}}',
       packages=find_packages(),
       install_requires=[
-        'libsbml'
+        'python-libsbml'
       ]
     )
