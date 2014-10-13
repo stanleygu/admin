@@ -34,6 +34,6 @@ for id in id_list:
     shell(cmd='git add .', dir=os.path.join(DIR_REPOS, id))
     shell(cmd=['git', 'commit', '-m', 'Initial Commit'], dir=os.path.join(DIR_REPOS, id))
     shell(cmd='git remote add origin git@github.com:biomodels/%s.git' % id, dir=os.path.join(DIR_REPOS, id))
-    shell(cmd='git push -u -f origin master', dir=os.path.join(DIR_REPOS, id))
+    shell(cmd='git push -u origin master', dir=os.path.join(DIR_REPOS, id))
     shell(cmd='git tag %s' % VERSION, dir=os.path.join(DIR_REPOS, id))
     shell(cmd='git push --tags', dir=os.path.join(DIR_REPOS, id))
