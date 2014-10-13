@@ -5,7 +5,7 @@ Script to create initial repositories for all biomodels
 from _create import create
 from _remove import remove
 from _shell import shell
-from _constants import VERSION, DIR_REPOS, FILE_REPO_LIST
+from _constants import VERSION, DIR_REPOS, FILE_REPO_LIST, FILE_BLACKLIST
 import os
 import pickle
 import bioservices
@@ -20,8 +20,9 @@ ids = s.getAllModelsId()
 # noncurated = s.getAllNonCuratedModelsId()
 
 existing_repos = set(pickle.load(open(FILE_REPO_LIST, 'r')))
+blacklist = set(pickle.load(open(FILE_BLACKLIST, 'r')))
 
-id_list = [id for id in ids if id not in existing_repos]
+id_list = [id for id in ids if id not in existing_repos & blacklist]
 
 for id in id_list:
     print 'Creating %s' % id

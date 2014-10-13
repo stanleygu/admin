@@ -2,25 +2,25 @@
 Constants used by scripts and other modules
 '''
 
-import os
+
+def ab_path(path):
+    '''
+    Get absolute path for file
+    '''
+    import os
+    return os.path.abspath(
+                    os.path.join(
+                        os.path.dirname(os.path.realpath(__file__)),
+                        path
+                    )
+                )
+                
 
 VERSION = 20140916 # Version of BioModels used
-DIR_REPOS = os.path.abspath(
-                os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                             '../repos'
-                )
-            )
-            
-FILE_REPO_LIST = os.path.abspath(
-                    os.path.join(
-                        os.path.dirname(os.path.realpath(__file__)),
-                        '../repos.pickle'
-                    )
-                )
-
-FILE_BLACKLIST = os.path.abspath(
-                    os.path.join(
-                        os.path.dirname(os.path.realpath(__file__)),
-                        '../blacklist.pickle'
-                    )
-                )
+DIR_REPOS = ab_path('../repos')
+FILE_REPO_LIST = ab_path('../repos.pickle')
+FILE_BLACKLIST = ab_path('../blacklist.pickle')
+                
+PATH_SETUP_TEMPLATE = ab_path('templates/setup.py.tpl')
+PATH_MODEL_TEMPLATE = ab_path('templates/model.py.tpl')
+PATH_INIT_TEMPLATE = ab_path('templates/__init__.py.tpl')
