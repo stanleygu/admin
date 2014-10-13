@@ -12,7 +12,9 @@ DIR_REPOS = os.path.abspath(
             )
 
 s = bioservices.BioModels()
+
 ids = s.getAllModelsId() 
+# ids = ['BIOMD0000000051']
 # all = s.getAllModelsId()
 # curated = s.getAllCuratedModelsId()
 # noncurated = s.getAllNonCuratedModelsId()
@@ -26,3 +28,7 @@ for id in ids:
     shell(cmd=['git', 'commit', '-m', 'Initial Commit'], dir=os.path.join(DIR_REPOS, id))
     shell(cmd='git remote add origin git@github.com:biomodels/%s.git' % id, dir=os.path.join(DIR_REPOS, id))
     shell(cmd='git push -u -f origin master', dir=os.path.join(DIR_REPOS, id))
+    shell(cmd='git tag %s' % VERSION, dir=os.path.join(DIR_REPOS, id))
+    shell(cmd='git push --tags', dir=os.path.join(DIR_REPOS, id))
+    
+    

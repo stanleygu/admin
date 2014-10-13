@@ -7,5 +7,5 @@ setup(name='{{name}}',
       maintainer='Stanley Gu',
       maintainer_url='stanleygu@gmail.com',
       packages=find_packages(),
-      package_data={'': ['*.xml']},
+      package_data={'': ['*.xml', 'README.md']},
     )
