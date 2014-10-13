@@ -22,7 +22,8 @@ ids = s.getAllModelsId()
 existing_repos = set(pickle.load(open(FILE_REPO_LIST, 'r')))
 blacklist = set(pickle.load(open(FILE_BLACKLIST, 'r')))
 
-id_list = [id for id in ids if id not in existing_repos & blacklist]
+# list of ids not found in union of the two sets
+id_list = [id for id in ids if id not in existing_repos | blacklist] 
 
 for id in id_list:
     print 'Creating %s' % id
