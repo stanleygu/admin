@@ -12,6 +12,7 @@ setup(name='biomodels-admin',
       install_requires=[
         'jinja2',
         'bioservices',
-        'six'
+        'six',
+        'PyGithub'
       ]
       )
