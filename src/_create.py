@@ -5,8 +5,6 @@ import sys
 import os
 import bioservices
 import _template as t
-import html2text
-h = html2text.HTML2Text()
 
 def mkdirp(path):
     '''
