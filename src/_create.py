@@ -3,8 +3,7 @@ Functions for creating repo contents for a biomodel
 '''
 import sys
 import os
-import bioservices
-import _template as t
+
 
 def mkdirp(path):
     '''
@@ -12,11 +11,27 @@ def mkdirp(path):
     '''
     if not os.path.exists(path):
         os.makedirs(path)
+        
+def write_file(file_path, id, contents):
+    '''
+    Write a file in a repo folder.
+    
+    Arguments:
+    file_path -- path of the file in the repo
+    id -- id of the biomodel
+    contents -- the file contents
+    '''
+    from _constants import DIR_REPOS
+    with open(os.path.join(DIR_REPOS, id, file_path), 'w') as f:
+        f.write(contents)
+    
 
 def create(id, DIR_REPOS, VERSION):
     '''
     Generates repo contents for a specific model
     '''
+    import bioservices
+    import _template as t
     s = bioservices.BioModels()
 
     sbml = s.getModelSBMLById(id)
