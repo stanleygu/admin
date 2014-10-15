@@ -10,6 +10,11 @@ def read_file(path):
         output = f.read()
     return output
     
+def render_template(file_path, params):
+    s = read_file(file_path)
+    template = Template(s)
+    return template.render(params)
+    
 def setuppy_template(params):
     s = read_file(c.PATH_SETUP_TEMPLATE)
     template = Template(s)
