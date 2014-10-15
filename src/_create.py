@@ -3,7 +3,8 @@ Functions for creating repo contents for a biomodel
 '''
 import sys
 import os
-
+import html2text
+h = html2text.HTML2Text()
 
 def mkdirp(path):
     '''
